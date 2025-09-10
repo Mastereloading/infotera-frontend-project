@@ -2,9 +2,24 @@
 @tailwind components;
 @tailwind utilities;
 
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --hotel-primary: #0080FF;
+  --hotel-text: #00264D;
+  --hotel-caption: #698096;
+  --hotel-gray: #BFCCD9;
+  --hotel-light-gray: #E3EBF3;
+  --hotel-white: #FFFFFF;
+  --hotel-overlay: rgba(18, 57, 82, 0.95);
+  --hotel-yellow: #F2BF09;
+  --hotel-red: #FF0000;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -18,4 +33,44 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+.text-hotel-primary {
+  color: var(--hotel-primary);
+}
+
+.text-hotel-text {
+  color: var(--hotel-text);
+}
+
+.text-hotel-caption {
+  color: var(--hotel-caption);
+}
+
+.text-hotel-gray {
+  color: var(--hotel-gray);
+}
+
+.text-hotel-light-gray {
+  color: var(--hotel-light-gray);
+}
+
+.text-hotel-white {
+  color: var(--hotel-white);
+}
+
+.text-hotel-yellow {
+  color: var(--hotel-yellow);
+}
+
+.text-hotel-red {
+  color: var(--hotel-red);
+}
+
+.bg-hotel-primary {
+  background-color: var(--hotel-primary);
+}
+
+.bg-hotel-overlay {
+  background-color: var(--hotel-overlay);
 }
