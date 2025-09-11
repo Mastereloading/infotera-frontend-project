@@ -24,9 +24,9 @@ export default function SearchBar({ initialDestination = "" }: SearchBarProps) {
   useEffect(() => {
     if (destination.length > 1) {
       fetch(`http://localhost:3333/suggestions`)
-        .then((res) => res.json())
+        .then(res => res.json())
         .then((data: Suggestion[]) => {
-          const filtered = data.filter((s) =>
+          const filtered = data.filter(s =>
             s.name.toLowerCase().includes(destination.toLowerCase())
           )
           setSuggestions(filtered)
@@ -56,8 +56,8 @@ export default function SearchBar({ initialDestination = "" }: SearchBarProps) {
   }
 
   return (
-    <section className="flex flex-col items-center justify-center w-full py-20">
-      <div className="mt-10 flex flex-wrap bg-hotel-white shadow-md rounded-lg overflow-visible w-[90%] max-w-5xl">
+    <section className="flex flex-col items-center justify-center w-full my-8">
+      <div className="flex flex-wrap bg-hotel-white shadow-md rounded-lg overflow-visible w-[90%] max-w-5xl">
         <div className="flex-1 p-4 border-r relative">
           <p className="text-hotel-caption text-sm">Destino</p>
           <input
