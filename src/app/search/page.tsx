@@ -3,7 +3,8 @@
 import { useSearchParams } from "next/navigation"
 import { useQuery } from "@tanstack/react-query"
 import { fetchHotels } from "@/lib/api"
-import Link from "next/link"
+import HotelCard from "@/components/HotelCard"
+import SearchBar from "@/components/SearchBar"
 
 export default function SearchPage() {
   const searchParams = useSearchParams()
@@ -16,32 +17,27 @@ export default function SearchPage() {
   })
 
   return (
-    <div className="p-8">
-      <h1 className="text-2xl font-bold mb-4">Hotéis em {destination}</h1>
+    <div style={{ padding: "32px", display: "flex", flexDirection: "column", alignItems: "center", minHeight: "100vh" }}>
+      <SearchBar initialDestination={destination} />
+
+      <h1 style={{ fontSize: "24px", fontWeight: 600, margin: "32px 0", color: "var(--hotel-primary)" }}>
+        Hotéis em {destination}
+      </h1>
 
       {isLoading && <p>Carregando...</p>}
-      {error && <p className="text-red-500">{(error as Error).message}</p>}
+      {error && <p style={{ color: "red" }}>{(error as Error).message}</p>}
+      {!isLoading && hotels?.length === 0 && <p>Nenhum hotel encontrado.</p>}
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-4">
+      <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "center", gap: "24px" }}>
         {hotels?.map(h => (
-          <Link
+          <HotelCard
             key={h.id}
-            href={`/hotels/${h.id}`}
-            className="border rounded p-4 hover:shadow-lg flex flex-col items-start"
-          >
-            <div className="w-full h-24 overflow-hidden rounded-md">
-              <img
-                src={h.hotel.image}
-                alt={h.hotel.name}
-                className="w-full h-full object-cover"
-              />
-            </div>
-            <h2 className="font-bold text-lg mt-2 truncate">{h.hotel.name}</h2>
-            <p className="text-sm truncate">{h.hotel.address}</p>
-            <p className="font-semibold mt-1">Preço: {h.lowestPrice.currency} {h.lowestPrice.amount}</p>
-          </Link>
+            id={h.id}
+            name={h.hotel.name}
+            image={h.hotel.image}
+            stars={h.hotel.stars}
+          />
         ))}
-        {!isLoading && hotels?.length === 0 && <p>Nenhum hotel encontrado.</p>}
       </div>
     </div>
   )

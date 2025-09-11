@@ -10,8 +10,12 @@ interface Suggestion {
   type: string
 }
 
-export default function SearchBar() {
-  const [destination, setDestination] = useState("")
+interface SearchBarProps {
+  initialDestination?: string
+}
+
+export default function SearchBar({ initialDestination = "" }: SearchBarProps) {
+  const [destination, setDestination] = useState(initialDestination)
   const [suggestions, setSuggestions] = useState<Suggestion[]>([])
   const [showSuggestions, setShowSuggestions] = useState(false)
 
