@@ -1,36 +1,80 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Desafio InfoTera Front-end – Sistema de Reserva de Hotéis
 
-## Getting Started
+## 🚀 Sobre o Projeto
 
-First, run the development server:
+Este projeto é uma aplicação web de busca e reserva de hotéis, desenvolvida com **Next.js**, **TypeScript** e **Tailwind CSS**. Permite ao usuário buscar destinos, visualizar hotéis disponíveis, conferir detalhes do hotel, selecionar um quarto e preencher os dados de reserva no checkout.
+
+O projeto consome uma **Fake API** fornecida para simulação dos dados.
+
+---
+
+## 🔗 Como Rodar o Projeto
+
+### 1. Clonar o repositório da aplicação
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone https://github.com/Mastereloading/infotera-frontend-project.git
+cd infotera-frontend-project
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### 2. Instalar dependências
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+pnpm install
+```
+ou, se você usa npm ou yarn:  
+```bash
+npm install
+# ou
+yarn install
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### 3. Clonar e rodar o servidor Fake API
 
-## Learn More
+```bash
+git clone https://github.com/enio-infotera/infotera-frontend-test-server
+cd infotera-frontend-test-server
+pnpm install
+pnpm run server
+```
 
-To learn more about Next.js, take a look at the following resources:
+- A API estará disponível em `http://localhost:3333`  
+- Endpoints principais:
+  - `/suggestions` → lista de destinos
+  - `/hotels` → lista de hotéis
+  - `/hotels/:id` → detalhes de hotel
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### 4. Rodar a aplicação
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+No diretório do seu projeto:
 
-## Deploy on Vercel
+```bash
+pnpm dev
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- Acesse a aplicação em `http://localhost:3000`
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+---
+
+## ✅ Checklist do Projeto
+
+| Funcionalidade                       | Status |
+|--------------------------------------|--------|
+| (X) Projeto rodando localmente        | ✅     |
+| (X) Navegação entre páginas           | ✅     |
+| (X) SearchBar com autocomplete        | ✅     |
+| (X) Cards de hotéis estilizados       | ✅     |
+| (X) Página de detalhes do hotel       | ✅     |
+| (X) Quartos exibidos no mesmo card    | ✅     |
+| (X) Responsividade e layout           | ✅     |
+
+---
+
+## 🛠 Próximos Passos / Melhorias
+
+- Finalizar **Redux/Zustand** para salvar quarto selecionado  
+- Implementar **formulário de checkout completo** com React Hook Form + Zod  
+- Adicionar **animações suaves** para melhorar UX  
+- Criar **testes unitários** para componentes críticos  
+
+---
