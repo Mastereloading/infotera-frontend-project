@@ -54,7 +54,7 @@ export default function HotelPage() {
           <p style={{ fontWeight: 500, marginBottom: "8px", color: "var(--hotel-text)" }}>{hotel.hotel.address}</p>
           <p style={{ marginBottom: "8px", color: "gold" }}>
             {Array.from({ length: hotel.hotel.stars }).map((_, i) => (
-              <span key={i}>★</span>
+              <span key={i} style={{ color: "gold", fontSize: "24px" }}>★</span>
             ))}
           </p>
           <p style={{ color: "var(--hotel-text)", fontSize: "14px", marginTop: "8px" }}>{hotel.hotel.description}</p>

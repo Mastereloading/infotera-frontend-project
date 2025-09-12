@@ -14,17 +14,24 @@ interface SearchBarProps {
   initialDestination?: string
 }
 
-export default function SearchBar({ initialDestination = "São Paulo" }: SearchBarProps) {
+export default function SearchBar({ initialDestination = "" }: SearchBarProps) {
   const [destination, setDestination] = useState(initialDestination)
   const [suggestions, setSuggestions] = useState<Suggestion[]>([])
   const [showSuggestions, setShowSuggestions] = useState(false)
-  const [checkIn, setCheckIn] = useState("2022-12-22")
-  const [checkOut, setCheckOut] = useState("2022-12-28")
+  const [checkIn, setCheckIn] = useState("1998-12-21")
+  const [checkOut, setCheckOut] = useState("2025-12-21")
   const [guests, setGuests] = useState(2)
+
+  const [ignoreNextEffect, setIgnoreNextEffect] = useState(false)
 
   const router = useRouter()
 
   useEffect(() => {
+    if (ignoreNextEffect) {
+      setIgnoreNextEffect(false)
+      return
+    }
+
     if (destination.length > 1) {
       fetch(`http://localhost:3333/suggestions`)
         .then(res => res.json())
@@ -48,10 +55,12 @@ export default function SearchBar({ initialDestination = "São Paulo" }: SearchB
   const handleSelectSuggestion = (s: Suggestion) => {
     setDestination(s.name)
     setShowSuggestions(false)
+    setIgnoreNextEffect(true)
   }
 
   const handleSearch = () => {
     if (destination.trim() !== "") {
+      setShowSuggestions(false)
       router.push(
         `/search?destination=${encodeURIComponent(
           destination
@@ -64,7 +73,10 @@ export default function SearchBar({ initialDestination = "São Paulo" }: SearchB
 
   return (
     <section className="flex justify-center w-full my-8 px-2">
-      <div style={{ padding: '16px', boxShadow: '0 10px 25px rgba(0,0,0,0.15)' }} className="bg-hotel-white shadow-2xl rounded-[12px] w-full max-w-[1307px] h-[34px] px-4 flex items-center gap-4">
+      <div
+        style={{ padding: '16px', boxShadow: '0 10px 25px rgba(0,0,0,0.15)' }}
+        className="bg-hotel-white shadow-2xl rounded-[12px] w-full max-w-[1307px] h-[34px] px-4 flex items-center gap-4"
+      >
         <div className="flex flex-1 gap-4">
           <div className="flex-1 flex flex-col justify-center relative">
             <div className="flex items-center">
@@ -83,15 +95,19 @@ export default function SearchBar({ initialDestination = "São Paulo" }: SearchB
               className="h-[28px] w-full max-w-[200px] px-2 text-[12px] leading-[26px] font-semibold tracking-normal font-poppins border border-gray-200 rounded-md text-[16px] g-white border-none outline-none"
             />
             {showSuggestions && suggestions.length > 0 && (
-              <ul className="absolute left-0 right-0 top-full bg-white border border-hotel-light-gray shadow-md rounded-md mt-1 max-h-60 overflow-y-auto z-50">
-                {suggestions.map((s) => (
+              <ul
+                style={{ boxShadow: '0 10px 25px rgba(0,0,0,0.15)', borderRadius: "16px", padding: 0 }}
+                className="absolute left-0 right-0 top-full bg-white border border-hotel-light-gray shadow-md rounded-md mt-1 max-h-60 overflow-y-auto z-50"
+              >
+                {suggestions.slice(0, 5).map((s) => (
                   <li
                     key={s.id}
                     onClick={() => handleSelectSuggestion(s)}
                     className="px-4 py-2 cursor-pointer hover:bg-hotel-light-gray"
                   >
-                    <span className="font-medium text-hotel-text">{s.name}</span>
-                    <span className="ml-2 text-sm text-hotel-caption">{s.region}</span>
+                    <div style={{ fontWeight: 600, padding: '8px 8px 8px 16px', backgroundColor: '#FFFFFF' }} className="bg-white p-2 rounded-md shadow-sm">
+                      <span className="font-medium text-hotel-text">{s.name} - {s.region}</span>
+                    </div>
                   </li>
                 ))}
               </ul>
