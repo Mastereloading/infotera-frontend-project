@@ -65,7 +65,7 @@ pnpm dev
 | SearchBar com autocomplete        | ✅     |
 | Cards de hotéis estilizados       | ✅     |
 | Página de detalhes do hotel       | ✅     |
-| Quartos exibidos no mesmo card    | ✅     |
+| Confirmação de Check-in           | ✅     |
 | Responsividade e layout           | ✅     |
 
 ---
