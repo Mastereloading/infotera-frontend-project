@@ -42,7 +42,7 @@ export default function HotelCard({ id, name, image, stars }: HotelCardProps) {
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginTop: "auto" }}>
           <div style={{ display: "flex", gap: "2px" }}>
             {Array.from({ length: stars }).map((_, i) => (
-              <span key={i} style={{ color: "gold", fontSize: "16px" }}>★</span>
+              <span key={i} style={{ color: "gold", fontSize: "24px" }}>★</span>
             ))}
           </div>
           <Link

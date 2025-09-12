@@ -58,15 +58,15 @@ pnpm dev
 
 ## ✅ Checklist do Projeto
 
-| Funcionalidade                       | Status |
-|--------------------------------------|--------|
-| (X) Projeto rodando localmente        | ✅     |
-| (X) Navegação entre páginas           | ✅     |
-| (X) SearchBar com autocomplete        | ✅     |
-| (X) Cards de hotéis estilizados       | ✅     |
-| (X) Página de detalhes do hotel       | ✅     |
-| (X) Quartos exibidos no mesmo card    | ✅     |
-| (X) Responsividade e layout           | ✅     |
+| Funcionalidade                    | Status |
+|-----------------------------------|--------|
+| Projeto rodando localmente        | ✅     |
+| Navegação entre páginas           | ✅     |
+| SearchBar com autocomplete        | ✅     |
+| Cards de hotéis estilizados       | ✅     |
+| Página de detalhes do hotel       | ✅     |
+| Quartos exibidos no mesmo card    | ✅     |
+| Responsividade e layout           | ✅     |
 
 ---
 
