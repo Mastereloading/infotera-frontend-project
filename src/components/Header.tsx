@@ -1,29 +1,48 @@
 "use client"
 
+import { usePathname } from "next/navigation"
+import { useRouter } from "next/navigation"
+
 export default function Header() {
+  const pathname = usePathname()
+
+  const headerStyle = pathname === "/" ? { backgroundColor: "var(--hotel-light-gray)" } : { boxShadow: '0 1px 10px rgba(0,0,0,0.15)', backgroundColor: "var(--hotel-white)" }
+  const divStyle = pathname === "/" ? { marginTop: '1vw', marginLeft: '8vw', marginRight: '8vw' } : { marginLeft: '8vw', marginRight: '8vw' }
+  
+  const router = useRouter()
+
   return (
-    <header className="w-full border-b border-gray-300 py-4 px-6 flex justify-between items-center" style={{ backgroundColor: "var(--hotel-primary)" }}>
-      <h1
-        className="font-semibold text-[20px] leading-[26px] text-hotel-text text-right"
-        style={{ width: '101px', height: '26px' }}
-      >INFOTRAVEL</h1>
-      <button className="flex items-center gap-2 text-hotel-blue font-semibold">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          className="h-5 w-5"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
+    <header
+      className="w-full border-b border-gray-300 py-4 px-6 flex justify-between items-center"
+      style={{ ...headerStyle }}
+    >
+      <div
+        style={{ ...divStyle }}
+        className="w-full flex justify-between items-center"
+      >
+        <h1
+          className="font-semibold text-[28px] leading-[26px] text-hotel-text text-right"
+          style={{ width: '101px', height: '26px' }}
         >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={2}
-            d="M5.121 17.804A8 8 0 1116.95 6.05M15 12h.01"
-          />
-        </svg>
-        Iniciar sessão
-      </button>
+          infotravel
+        </h1>
+        <div className="flex items-center gap-2 text-hotel-blue font-semibold">
+          <div
+            style={{ display: pathname === "/" ? 'none' : '' }}
+            className="flex items-center"
+            onClick={() => router.push('/')}
+          >
+            <img src="/icons/return.svg" alt="Login" className="w-[18px] h-[18px] mr-[10px]" />
+            <label style={{ paddingRight: '20px' }} className="text-hotel-caption font-normal text-[16px] leading-[26px] tracking-normal">
+              Página Inicial
+            </label>
+          </div>
+          <img src="/icons/login.svg" alt="Login" className="w-[18px] h-[18px] mr-[10px]" />
+          <label className="text-hotel-caption font-normal text-[16px] leading-[26px] tracking-normal">
+            Iniciar Sessão
+          </label>
+        </div>
+      </div>
     </header>
   )
 }
