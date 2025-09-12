@@ -67,6 +67,10 @@ body {
   color: var(--hotel-red);
 }
 
+.bg-hotel-primary {
+  background-color: var(--hotel-primary);
+}
+
 .bg-hotel-text {
   background-color: var(--hotel-text);
 }
@@ -93,4 +97,15 @@ body {
 
 .bg-hotel-red {
   background-color: var(--hotel-red);
+}
+
+input::-webkit-calendar-picker-indicator {
+  display: none;
+  -webkit-appearance: none;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }

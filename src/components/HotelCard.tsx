@@ -48,6 +48,7 @@ export default function HotelCard({ id, name, image, stars }: HotelCardProps) {
           <Link
             href={`/hotels/${id}`}
             style={{
+              boxShadow: '0 10px 25px rgba(0,0,0,0.15)',
               backgroundColor: "var(--hotel-primary)",
               color: "#fff",
               fontWeight: 500,
