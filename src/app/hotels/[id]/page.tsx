@@ -48,7 +48,7 @@ export default function HotelPage() {
         </div>
         <div style={{ flex: 1, display: "flex", flexDirection: "column" }}>
           <p style={{ margin: "0px", fontSize: "28px", fontWeight: 600, color: "var(--hotel-text)" }}>{hotel.hotel.name}</p>
-          <p style={{ margin: "0px", display: "flex", alignItems: "center", fontSize: "14px", fontWeight: 500, marginBottom: "8px", color: "var(--hotel-caption)" }}>
+          <p style={{ margin: "0px", display: "flex", alignItems: "center", fontSize: "14px", fontWeight: 400, marginBottom: "8px", color: "var(--hotel-caption)" }}>
             <img
               src={"/icons/location.svg"}
               alt="Login"
@@ -66,7 +66,7 @@ export default function HotelPage() {
               />
             ))}
           </p>
-          <p style={{ whiteSpace: "pre-line", color: "var(--hotel-caption)", fontSize: "14px", marginTop: "8px" }}>{hotel.hotel.description.replace(/<br\s*\/?>/gi, "\n")}</p>
+          <p style={{ whiteSpace: "pre-line", color: "var(--hotel-caption)", fontSize: "14px", marginTop: "8px", fontWeight: 400 }}>{hotel.hotel.description.replace(/<br\s*\/?>/gi, "\n")}</p>
         </div>
         <div className="text-hotel-text" style={{ width: "100%", maxWidth: "1200px", marginTop: "24px", padding: "0px 24px 0px 24px", display: "flex", flexDirection: "column", gap: "16px" }}>
           <p style={{ margin: "0px", fontSize: "20px", fontWeight: 600 }}>Quartos disponíveis</p>
@@ -127,11 +127,18 @@ export default function HotelPage() {
                     outline: "none",
                   }}
                   className="bg-hotel-primary hover:bg-blue-600 text-[14px] font-semibold rounded-full w-[132px] h-[38px]"
-                  onClick={() =>
-                    router.push(
-                      `/hotels/${id}/reserve/${index}?roomName=${encodeURIComponent(room.roomType.name)}`
+                  onClick={() => {
+                    localStorage.setItem(
+                      "selectedRoom",
+                      JSON.stringify({
+                        hotel,
+                        room,
+                      })
                     )
-                  }
+                    router.push(
+                      `/hotels/${hotel.id}/reserve/${encodeURIComponent(room.roomType.name)}`
+                    )
+                  }}
                 >
                   Reservar Agora
                 </button>

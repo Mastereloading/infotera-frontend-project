@@ -109,3 +109,8 @@ input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
+
+p {
+  color: var(--hotel-text);
+  font-weight: 600;
+}
