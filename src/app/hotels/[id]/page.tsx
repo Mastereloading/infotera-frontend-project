@@ -40,7 +40,7 @@ export default function HotelPage() {
   if (!hotel) return <p style={{ padding: "32px" }}>Hotel não encontrado.</p>
 
   return (
-    <div style={{ padding: "32px", display: "flex", flexDirection: "column", alignItems: "center", minHeight: "80vh", backgroundColor: "var(--hotel-light-gray)" }}>
+    <div style={{ marginTop: "16px", padding: "32px", display: "flex", flexDirection: "column", alignItems: "center", minHeight: "80vh", backgroundColor: "var(--hotel-light-gray)" }}>
       <SearchBar initialDestination="" />
       <div style={{ width: "100%", maxWidth: "1200px", backgroundColor: "var(--hotel-white)", borderRadius: "24px", boxShadow: "0 10px 25px rgba(0,0,0,0.15)", display: "flex", flexDirection: "row", gap: "24px", marginTop: "32px", padding: "24px", flexWrap: "wrap" }}>
         <div style={{ boxShadow: "0 1px 25px rgba(0,0,0,0.15)", flexShrink: 0, width: "447px", height: "312px", overflow: "hidden", borderRadius: "24px" }}>

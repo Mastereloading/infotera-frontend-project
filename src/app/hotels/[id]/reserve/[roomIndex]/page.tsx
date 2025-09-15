@@ -34,17 +34,20 @@ export default function ReservePage() {
     router.push(
       `/hotels/${hotel.id}/reserve/${encodeURIComponent(
         room.roomType.name
-      )}/confirmed?name=${encodeURIComponent(
-        name
-      )}&surname=${encodeURIComponent(surname)}&email=${encodeURIComponent(
+      )}/confirmed?name=${encodeURIComponent(name)}&surname=${encodeURIComponent(
+        surname
+      )}&reservename=${encodeURIComponent(reservename)}&email=${encodeURIComponent(
         email
-      )}&phone=${encodeURIComponent(phone)}`
+      )}&hotelName=${encodeURIComponent(
+        hotel.hotel.name
+      )}`
     )
   }
 
   return (
     <div
       style={{
+        marginTop: "16px",
         padding: "32px",
         backgroundColor: "var(--hotel-light-gray)",
         display: "flex",
@@ -70,7 +73,7 @@ export default function ReservePage() {
           width: "100%"
         }}
       >
-        <div style={{ minWidth: "690px", display: "flex", flexDirection: "column", gap: "24px" }}>
+        <div style={{ minWidth: "805px", display: "flex", flexDirection: "column", gap: "24px" }}>
           <div
             style={{
               backgroundColor: "var(--hotel-white)",
@@ -176,7 +179,7 @@ export default function ReservePage() {
             </div>
           </div>
         </div>
-        <div style={{ maxWidth: "350px", display: "flex", flexDirection: "column", gap: "24px", flex: 1 }}>
+        <div style={{ display: "flex", flexDirection: "column", gap: "24px", flex: 1 }}>
           <div
             style={{
               backgroundColor: "var(--hotel-white)",

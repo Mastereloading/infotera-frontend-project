@@ -26,7 +26,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
       <body className={`${poppins.className} font-normal flex flex-col min-h-screen`}>
         <QueryClientProvider client={queryClient}>
           <Header />
-          <main className="flex-1 flex flex-col items-center justify-start px-[70px] py-8">
+          <main className="flex-1 flex flex-col items-center justify-start">
             {children}
           </main>
           <Footer />

@@ -9,6 +9,8 @@ export default function Header() {
   const headerStyle =
     pathname === "/"
       ? { backgroundColor: "var(--hotel-light-gray)" }
+      : pathname.includes("/confirmed")
+      ? { display: "none" }
       : {
           boxShadow: "0 1px 10px rgba(0,0,0,0.15)",
           backgroundColor: "var(--hotel-white)",
@@ -63,8 +65,6 @@ export default function Header() {
           </label>
         </div>
       </div>
-
-      {/* CSS apenas para telas pequenas */}
       <style jsx>{`
         @media (max-width: 768px) {
           .header-container {
