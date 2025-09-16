@@ -210,7 +210,7 @@ export default function SearchBar({ initialDestination = "" }: SearchBarProps) {
       </div>
 
       <style jsx>{`
-        @media (max-width: 900px) {
+        @media (max-width: 970px) {
           .responsive-search {
             flex-direction: column;
             height: auto;

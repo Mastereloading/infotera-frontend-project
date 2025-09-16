@@ -42,11 +42,27 @@ export default function HotelPage() {
   return (
     <div style={{ marginTop: "16px", padding: "32px", display: "flex", flexDirection: "column", alignItems: "center", minHeight: "80vh", backgroundColor: "var(--hotel-light-gray)" }}>
       <SearchBar initialDestination="" />
-      <div style={{ width: "100%", maxWidth: "1200px", backgroundColor: "var(--hotel-white)", borderRadius: "24px", boxShadow: "0 10px 25px rgba(0,0,0,0.15)", display: "flex", flexDirection: "row", gap: "24px", marginTop: "32px", padding: "24px", flexWrap: "wrap" }}>
-        <div style={{ boxShadow: "0 1px 25px rgba(0,0,0,0.15)", flexShrink: 0, width: "447px", height: "312px", overflow: "hidden", borderRadius: "24px" }}>
-          <img src={hotel.hotel.image} alt={hotel.hotel.name} style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+
+      <div
+        className="hotel-details-wrapper"
+        style={{
+          width: "100%",
+          maxWidth: "1200px",
+          backgroundColor: "var(--hotel-white)",
+          borderRadius: "24px",
+          boxShadow: "0 10px 25px rgba(0,0,0,0.15)",
+          display: "flex",
+          flexDirection: "row",
+          gap: "24px",
+          marginTop: "32px",
+          padding: "24px",
+          flexWrap: "wrap",
+        }}
+      >
+        <div className="hotel-image-container">
+          <img src={hotel.hotel.image} alt={hotel.hotel.name} />
         </div>
-        <div style={{ flex: 1, display: "flex", flexDirection: "column" }}>
+        <div style={{ flex: 1, minWidth: "280px", display: "flex", flexDirection: "column" }}>
           <p style={{ margin: "0px", fontSize: "28px", fontWeight: 600, color: "var(--hotel-text)" }}>{hotel.hotel.name}</p>
           <p style={{ margin: "0px", display: "flex", alignItems: "center", fontSize: "14px", fontWeight: 400, marginBottom: "8px", color: "var(--hotel-caption)" }}>
             <img
@@ -66,31 +82,34 @@ export default function HotelPage() {
               />
             ))}
           </p>
-          <p style={{ whiteSpace: "pre-line", color: "var(--hotel-caption)", fontSize: "14px", marginTop: "8px", fontWeight: 400 }}>{hotel.hotel.description.replace(/<br\s*\/?>/gi, "\n")}</p>
+          <p style={{ whiteSpace: "pre-line", color: "var(--hotel-caption)", fontSize: "14px", marginTop: "8px", fontWeight: 400 }}>
+            {hotel.hotel.description.replace(/<br\s*\/?>/gi, "\n")}
+          </p>
         </div>
         <div className="text-hotel-text" style={{ width: "100%", maxWidth: "1200px", marginTop: "24px", padding: "0px 24px 0px 24px", display: "flex", flexDirection: "column", gap: "16px" }}>
           <p style={{ margin: "0px", fontSize: "20px", fontWeight: 600 }}>Quartos disponíveis</p>
           {hotel.rooms.map((room: Room, index: number) => (
             <div
               key={index}
+              className="room-card"
               style={{
                 backgroundColor: "var(--hotel-light-gray)",
                 borderRadius: "16px",
-                padding: "0px 24px 0px 24px",
+                padding: "16px 24px",
                 display: "flex",
                 flexDirection: "row",
                 alignItems: "center",
                 justifyContent: "space-between",
-                height: "88px",
                 gap: "16px",
+                flexWrap: "wrap",
               }}
             >
-              <div style={{ display: "flex", flexDirection: "column", justifyContent: "center" }}>
-                <p style={{ fontWeight: 600, color: "var(--hotel-text)", margin: 0 }}>
+              <div className="room-info" style={{ display: "flex", flexDirection: "column", justifyContent: "center" }}>
+                <p className="room-name" style={{ fontWeight: 600, color: "var(--hotel-text)", margin: 0 }}>
                   {room.roomType.name}
                 </p>
-                {room.cancellationPolicies.refundable ?
-                  <p className="mt-[4px]" style={{ fontWeight: 600, display: "flex", alignItems: "center", fontSize: "14px", margin: 0, color: "var(--hotel-primary)" }}>
+                {room.cancellationPolicies.refundable ? (
+                  <p className="room-cancel" style={{ fontWeight: 600, display: "flex", alignItems: "center", fontSize: "14px", margin: 0, color: "var(--hotel-primary)" }}>
                     <img
                       src={"/icons/cancely.svg"}
                       alt="Login"
@@ -98,8 +117,8 @@ export default function HotelPage() {
                     />
                     Cancelamento gratuito
                   </p>
-                :
-                  <p className="mt-[4px]" style={{ fontWeight: 600, display: "flex", alignItems: "center", fontSize: "14px", margin: 0, color: "var(--hotel-red)" }}>
+                ) : (
+                  <p className="room-cancel" style={{ fontWeight: 600, display: "flex", alignItems: "center", fontSize: "14px", margin: 0, color: "var(--hotel-red)" }}>
                     <img
                       src={"/icons/canceln.svg"}
                       alt="Login"
@@ -107,9 +126,10 @@ export default function HotelPage() {
                     />
                     Multa de cancelamento
                   </p>
-                }
+                )}
               </div>
-              <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: "36px" }}>
+
+              <div className="room-actions" style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: "36px", flexWrap: "wrap" }}>
                 <div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
                   <div style={{ display: "flex", alignItems: "baseline", gap: "4px" }}>
                     <p style={{ margin: "0px", fontSize: "22px", fontWeight: 600, color: "var(--hotel-primary)" }}>
@@ -148,6 +168,74 @@ export default function HotelPage() {
           ))}
         </div>
       </div>
+
+      <style jsx>{`
+        .hotel-image-container {
+          flex-shrink: 0;
+          width: 100%;
+          max-width: 447px;
+          height: auto;
+          border-radius: 24px;
+          box-shadow: 0 1px 25px rgba(0, 0, 0, 0.15);
+          overflow: hidden;
+        }
+
+        .hotel-image-container img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+
+        @media (max-width: 970px) {
+          .hotel-image-container {
+            max-width: 70%;
+          }
+        }
+
+        @media (max-width: 768px) {
+          .hotel-details-wrapper {
+            flex-direction: column;
+          }
+
+          .hotel-image-container {
+            max-width: 100%;
+            margin-bottom: 16px;
+          }
+
+          .room-card {
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+          }
+
+          .room-info {
+            display: flex !important;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            width: 100%;
+          }
+
+          .room-info .room-name,
+          .room-info .room-cancel {
+            text-align: center;
+            margin: 4px 0;
+          }
+
+          .room-actions {
+            flex-direction: column;
+            gap: 16px;
+            margin-top: 12px;
+            width: 100%;
+            align-items: center;
+          }
+
+          .room-actions button {
+            margin-top: 8px;
+          }
+        }
+      `}</style>
     </div>
   )
 }
