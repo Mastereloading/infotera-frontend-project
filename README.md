@@ -72,9 +72,9 @@ pnpm dev
 
 ## 🛠 Próximos Passos / Melhorias
 
-- Finalizar **Redux/Zustand** para salvar quarto selecionado  
-- Implementar **formulário de checkout completo** com React Hook Form + Zod  
-- Adicionar **animações suaves** para melhorar UX  
+- Tratamento de **erros** para melhorar a experiência do usuário  
+- Renderizar **Skeleton Loading** e **Skeleton Cards** na renderização pré-requisição 
+- Implementar **Redux** para salvar quarto selecionado  
 - Criar **testes unitários** para componentes críticos  
 
 ---
