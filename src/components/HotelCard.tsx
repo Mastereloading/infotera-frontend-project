@@ -12,8 +12,8 @@ interface HotelCardProps {
 export default function HotelCard({ id, name, image, stars }: HotelCardProps) {
   return (
     <div
+      className="hotel-card"
       style={{
-        width: "397px",
         borderRadius: "24px",
         backgroundColor: "var(--hotel-white)",
         boxShadow: "0 10px 25px rgba(0,0,0,0.15)",
@@ -21,6 +21,8 @@ export default function HotelCard({ id, name, image, stars }: HotelCardProps) {
         display: "flex",
         flexDirection: "column",
         alignItems: "stretch",
+        width: "100%",
+        maxWidth: "397px"
       }}
     >
       <div style={{ width: "100%", height: "265px", overflow: "hidden" }}>
@@ -36,7 +38,17 @@ export default function HotelCard({ id, name, image, stars }: HotelCardProps) {
         />
       </div>
       <div style={{ padding: "16px", display: "flex", flexDirection: "column", flex: 1 }}>
-        <h2 style={{ fontWeight: 600, fontSize: "18px", marginBottom: "12px", color: "var(--hotel-text)", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>
+        <h2
+          style={{
+            fontWeight: 600,
+            fontSize: "18px",
+            marginBottom: "12px",
+            color: "var(--hotel-text)",
+            whiteSpace: "nowrap",
+            overflow: "hidden",
+            textOverflow: "ellipsis",
+          }}
+        >
           {name}
         </h2>
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginTop: "auto" }}>
@@ -48,7 +60,7 @@ export default function HotelCard({ id, name, image, stars }: HotelCardProps) {
           <Link
             href={`/hotels/${id}`}
             style={{
-              boxShadow: '0 10px 25px rgba(0,0,0,0.15)',
+              boxShadow: "0 10px 25px rgba(0,0,0,0.15)",
               backgroundColor: "var(--hotel-primary)",
               color: "#fff",
               fontWeight: 500,
@@ -62,6 +74,15 @@ export default function HotelCard({ id, name, image, stars }: HotelCardProps) {
           </Link>
         </div>
       </div>
+
+      <style jsx>{`
+        @media (max-width: 440px) {
+          .hotel-card {
+            max-width: 100%;
+            border-radius: 16px;
+          }
+        }
+      `}</style>
     </div>
   )
 }
