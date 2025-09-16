@@ -125,6 +125,7 @@ export default function HotelPage() {
                     boxShadow: "0 10px 25px rgba(0, 128, 255, 0.25)",
                     border: "none",
                     outline: "none",
+                    cursor: "pointer",
                   }}
                   className="bg-hotel-primary hover:bg-blue-600 text-[14px] font-semibold rounded-full w-[132px] h-[38px]"
                   onClick={() => {

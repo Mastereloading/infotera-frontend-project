@@ -39,7 +39,7 @@ export default function Header() {
         </h1>
         <div className="flex items-center gap-2 text-hotel-blue font-semibold header-actions">
           <div
-            style={{ display: pathname === "/" ? "none" : "" }}
+            style={{ cursor: "pointer", display: pathname === "/" ? "none" : "" }}
             className="flex items-center"
             onClick={() => router.push("/")}
           >
@@ -49,7 +49,7 @@ export default function Header() {
               className="w-[18px] h-[18px] mr-[10px]"
             />
             <label
-              style={{ paddingRight: "20px" }}
+              style={{ cursor: "pointer", paddingRight: "20px" }}
               className="text-hotel-caption font-normal text-[16px] leading-[26px] tracking-normal"
             >
               Página Inicial

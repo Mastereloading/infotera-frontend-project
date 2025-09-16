@@ -189,7 +189,7 @@ export default function ReservePage() {
               flexDirection: "column",
               gap: "16px",
               boxShadow: "0 10px 25px rgba(0,0,0,0.15)",
-              width: "100%",
+              maxWidth: "352px"
             }}
           >
             <p style={{ margin: 0, fontWeight: 600, color: "var(--hotel-primary)", fontSize: "18px" }}>

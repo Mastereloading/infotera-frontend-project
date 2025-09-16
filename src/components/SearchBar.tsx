@@ -75,7 +75,7 @@ export default function SearchBar({ initialDestination = "" }: SearchBarProps) {
     <section className="flex justify-center w-full my-8 px-2">
       <div
         style={{
-          padding: "16px",
+          padding: "18px",
           boxShadow: "0 10px 25px rgba(0,0,0,0.15)",
         }}
         className="bg-hotel-white shadow-2xl rounded-[12px] w-full max-w-[1307px] h-[34px] px-4 flex items-center gap-4 responsive-search"
@@ -199,6 +199,7 @@ export default function SearchBar({ initialDestination = "" }: SearchBarProps) {
               boxShadow: "0 10px 25px rgba(0,0,0,0.15)",
               border: "none",
               outline: "none",
+              cursor: "pointer",
             }}
             onClick={handleSearch}
             className="bg-hotel-primary hover:bg-blue-600 text-[14px] font-semibold rounded-full w-[118px] h-[38px]"
