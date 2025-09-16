@@ -71,7 +71,7 @@ export default function ReservePage() {
         <div className="reserve-inputs">
           <div className="card">
             <p style={{ color: "var(--hotel-text)", margin: 0, fontSize: "16px" }}>HOTEL: {hotel.hotel.name}</p>
-            <div style={{ display: "flex", gap: "12px" }}>
+            <div className="input-group">
               <div style={{ display: "flex", flexDirection: "column" }}>
                 <div style={{ display: "flex" }}>
                   <p style={{ fontSize: "14px", margin: "0 4px 4px 0" }}>Nome</p>
@@ -100,7 +100,7 @@ export default function ReservePage() {
 
           <div className="card">
             <p style={{ margin: 0 }}>Contato da reserva</p>
-            <div style={{ display: "flex", gap: "12px" }}>
+            <div className="input-group">
               <div style={{ display: "flex", flexDirection: "column" }}>
                 <p style={{ fontSize: "14px", margin: "0 0 4px 0" }}>Nome</p>
                 <input className="input-field" type="text" placeholder="Nome" value={reservename} onChange={(e) => setReservename(e.target.value)} />
@@ -214,6 +214,11 @@ export default function ReservePage() {
           border: 1px solid #ccc;
         }
 
+        .input-group {
+          display: flex;
+          gap: 12px;
+        }
+
         .reserve-summary {
           flex: 1;
           max-width: 352px;
@@ -245,6 +250,12 @@ export default function ReservePage() {
           }
           .reserve-summary {
             max-width: 100%;
+          }
+        }
+
+        @media (max-width: 700px) {
+          .input-group {
+            flex-direction: column;
           }
         }
       `}</style>
